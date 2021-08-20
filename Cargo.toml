@@ -1,0 +1,12 @@
+[package]
+name = "serde-parse-failure"
+version = "0.1.0"
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+serde = { version = "1.0.126", features = ["derive"] }
+serde_json = "1.0.64"
+# comment out `tracing-bunyan-formatter` to make tests pass
+tracing-bunyan-formatter = "0.2.4"
