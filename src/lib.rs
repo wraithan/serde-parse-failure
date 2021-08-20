@@ -9,9 +9,15 @@ enum Thing {
     Enumy,
 }
 
+
+#[derive(Deserialize)]
+struct StructNumby {
+    _field: u8
+}
+
 #[cfg(test)]
 mod tests {
-    use super::Thing;
+    use super::{Thing, StructNumby};
 
     #[test]
     fn thing_numby() {
@@ -36,5 +42,10 @@ mod tests {
     #[test]
     fn thing_enumy() {
         let _thing: Thing = serde_json::from_str(r#"{ "type": "Enumy" }"#).expect("couldn't parse");
+    }
+
+    #[test]
+    fn struct_numby() {
+        let _thing: StructNumby = serde_json::from_str(r#"{ "_field": 2 }"#).expect("couldn't parse");
     }
 }
