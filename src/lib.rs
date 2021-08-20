@@ -3,7 +3,9 @@ use serde::Deserialize;
 #[derive(Deserialize)]
 #[serde(tag = "type")]
 enum Thing {
-    Structy { field: u8 },
+    Numby { _field: u8 },
+    Stringy { _field: String },
+    Booly { _field: bool },
     Enumy,
 }
 
@@ -12,9 +14,23 @@ mod tests {
     use super::Thing;
 
     #[test]
-    fn thing_structy() {
+    fn thing_numby() {
         let _thing: Thing =
-            serde_json::from_str(r#"{ "type": "Structy", "field": 1 }"#).expect("couldn't parse");
+            serde_json::from_str(r#"{ "type": "Numby", "_field": 1 }"#).expect("couldn't parse");
+    }
+
+
+    #[test]
+    fn thing_stringy() {
+        let _thing: Thing =
+            serde_json::from_str(r#"{ "type": "Stringy", "_field": "val" }"#).expect("couldn't parse");
+    }
+
+
+    #[test]
+    fn thing_booly() {
+        let _thing: Thing =
+            serde_json::from_str(r#"{ "type": "Booly", "_field": true }"#).expect("couldn't parse");
     }
 
     #[test]
